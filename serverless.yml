@@ -30,3 +30,4 @@ functions:
 custom:
   serverless-offline:
     host: '0.0.0.0'
+    localEnvironment: true
