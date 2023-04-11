@@ -1,0 +1,32 @@
+service: swapi-challenge
+
+frameworkVersion: "3"
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  httpApi:
+    cors: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+functions:
+  home:
+    handler: src/main.docs
+    events:
+      - httpApi: 'GET /'
+  swagger:
+    handler: src/main.swagger
+    events:
+      - httpApi: 'GET /swagger'
+  people:
+    handler: src/main.people
+    events:
+      - httpApi: 'GET /people'
+      - httpApi: 'POST /people'
+custom:
+  serverless-offline:
+    host: '0.0.0.0'
